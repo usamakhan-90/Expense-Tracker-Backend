@@ -8,6 +8,7 @@ var connectDb = require('./database/db')
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var authRouter = require('./routes/authRoutes')
 
 dotenv.config();
 connectDb();
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use("/auth", authRouter)
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 
