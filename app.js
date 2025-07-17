@@ -7,9 +7,9 @@ var dotenv = require('dotenv');
 var connectDb = require('./database/db')
 var cloudinary = require('cloudinary')
 
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+
 var authRouter = require('./routes/authRoutes')
+var incomeRouter = require('./routes/incomeRoutes')
 
 dotenv.config();
 connectDb();
@@ -33,8 +33,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/auth", authRouter)
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use("/income", incomeRouter);
 
 const port = process.env.PORT;
 
