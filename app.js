@@ -11,6 +11,7 @@ var cloudinary = require('cloudinary')
 var authRouter = require('./routes/authRoutes')
 var incomeRouter = require('./routes/incomeRoutes')
 var expenseRouter = require('./routes/expenseRoutes')
+var dashboardRouter = require('./routes/dashboardRoutes')
 
 dotenv.config();
 connectDb();
@@ -33,9 +34,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use("/auth", authRouter)
+app.use("/auth", authRouter);
 app.use("/income", incomeRouter);
-app.use("/expense", expenseRouter)
+app.use("/expense", expenseRouter);
+app.use("/dashboard", dashboardRouter);
 
 const port = process.env.PORT;
 
