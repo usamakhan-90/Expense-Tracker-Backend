@@ -10,6 +10,7 @@ var cloudinary = require('cloudinary')
 
 var authRouter = require('./routes/authRoutes')
 var incomeRouter = require('./routes/incomeRoutes')
+var expenseRouter = require('./routes/expenseRoutes')
 
 dotenv.config();
 connectDb();
@@ -34,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/auth", authRouter)
 app.use("/income", incomeRouter);
+app.use("/expense", expenseRouter)
 
 const port = process.env.PORT;
 
