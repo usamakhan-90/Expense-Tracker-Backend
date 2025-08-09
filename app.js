@@ -6,6 +6,7 @@ var logger = require('morgan');
 var dotenv = require('dotenv');
 var connectDb = require('./database/db')
 var cloudinary = require('cloudinary')
+var cors = require('cors')
 
 
 var authRouter = require('./routes/authRoutes')
@@ -28,11 +29,18 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+const corsOptions = {
+  origin: 'http://localhost:5173', // Your frontend origin
+  credentials: true, // Allow credentials
+  optionsSuccessStatus: 200
+};
+
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cors(corsOptions))
 
 app.use("/auth", authRouter);
 app.use("/income", incomeRouter);
