@@ -30,23 +30,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 const corsOptions = {
-  origin: [
-    "http://localhost:3000", // local
-    "https://expense-tracker-frontend-two-kappa.vercel.app" // deployed frontend
-  ],
-  credentials: true,
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
+  origin: 'http://localhost:5173', // Your frontend origin
+  credentials: true, // Allow credentials
+  optionsSuccessStatus: 200
 };
-
-
-
-
-// ✅ Apply CORS before routes
-app.use(cors(corsOptions));
-
-// ✅ Handle preflight requests explicitly
-app.options("*", cors(corsOptions));
 
 app.use(logger('dev'));
 app.use(express.json());
@@ -60,11 +47,11 @@ app.use("/income", incomeRouter);
 app.use("/expense", expenseRouter);
 app.use("/dashboard", dashboardRouter);
 
-// const port = process.env.PORT;
+const port = process.env.PORT;
 
-// app.listen(port, ()=>{
-//   console.log(`Server is running on the port https://localhost:${port}`)
-// })
+app.listen(port, ()=>{
+  console.log(`Server is running on the port https://localhost:${port}`)
+})
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
