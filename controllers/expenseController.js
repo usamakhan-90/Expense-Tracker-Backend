@@ -2,7 +2,7 @@ const expenseModel = require("../models/expenseModel");
 const xlsx  = require('xlsx')
 const addexpense = async (req, res) => {
   try {
-    const userId = req.user.id;
+    const userId = req.user._id;
 
     const { icon, category, amount, date } = req.body;
 
@@ -38,7 +38,7 @@ const addexpense = async (req, res) => {
 
 const getAllexpense = async (req, res) => {
   try {
-    const expenses = await expenseModel.find();
+    const expenses = await expenseModel.find({userId: req.user._id});
 
     if (!expenses) {
       return res.status(404).json({

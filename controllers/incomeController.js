@@ -38,7 +38,7 @@ const addIncome = async (req, res) => {
 
 const getAllIncome = async (req, res) => {
   try {
-    const incomes = await incomeModel.find();
+    const incomes = await incomeModel.find({userId: req.user._id});
 
     if (!incomes) {
       return res.status(404).json({

@@ -30,7 +30,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // Your frontend origin
+  origin: 'http://localhost:5174', // Your frontend origin
   credentials: true, // Allow credentials
   optionsSuccessStatus: 200
 };
