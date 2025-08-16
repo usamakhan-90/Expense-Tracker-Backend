@@ -60,11 +60,11 @@ app.use("/income", incomeRouter);
 app.use("/expense", expenseRouter);
 app.use("/dashboard", dashboardRouter);
 
-const port = process.env.PORT;
+// const port = process.env.PORT;
 
-app.listen(port, ()=>{
-  console.log(`Server is running on the port https://localhost:${port}`)
-})
+// app.listen(port, ()=>{
+//   console.log(`Server is running on the port https://localhost:${port}`)
+// })
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
